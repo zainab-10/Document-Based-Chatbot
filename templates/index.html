@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Chatbot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="app-title">
+                <span class="app-icon">📚</span>
+                <span>Document Chatbot</span>
+            </div>
+            <div class="upload-section">
+                <div class="section-title">Upload Document</div>
+                <div class="file-upload-container">
+                    <div class="upload-btn">
+                        <i class="fas fa-file-pdf"></i> Select PDF File
+                    </div>
+                    <input type="file" class="file-input" id="pdf-upload" accept=".pdf" />
+                </div>
+                <div id="upload-status"></div>
+            </div>
+            <div class="section-title">My Documents</div>
+            <div class="doc-list" id="document-list">
+                <!-- Document items will be added here -->
+                <div class="doc-item empty-state">No documents loaded yet</div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h2>Chat with your documents</h2>
+                    <div id="processing-status"></div>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                    <div class="welcome-message">
+                        <h3>Welcome to Document Chatbot!</h3>
+                        <div class="welcome-steps">
+                            <ol>
+                                <li><strong>Upload</strong> a PDF document using the panel on the left.</li>
+                                <li><strong>Wait</strong> for the document to be processed (this may take a moment).</li>
+                                <li><strong>Ask questions</strong> about the content of your document.</li>
+                            </ol>
+                            <p>Try questions like:</p>
+                            <ul>
+                                <li>"What is the main topic of this document?"</li>
+                                <li>"Summarize this document."</li>
+                                <li>"What are the key points in this document?"</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input-container">
+                    <form class="chat-input-form" id="chat-form">
+                        <input type="text" class="chat-input" id="question-input" placeholder="Ask a question about your document..." disabled />
+                        <button type="submit" class="send-btn" id="send-btn" disabled>
+                            Send
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

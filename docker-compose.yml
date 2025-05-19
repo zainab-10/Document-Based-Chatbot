@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  document-chatbot:
+    build: .
+    container_name: document-chatbot
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./uploads:/app/uploads
+      - ./document_data:/app/document_data
+    restart: unless-stopped
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=production
+      - MAX_UPLOAD_SIZE=16777216  # 16MB in bytes
